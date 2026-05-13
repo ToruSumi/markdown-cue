@@ -98,6 +98,17 @@
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Security & Communication Constraints *(mandatory)*
+
+- **SCON-001**: Feature MUST list every external communication path with purpose,
+  trigger, and default state (enabled or disabled).
+- **SCON-002**: Feature MUST avoid non-essential network calls and justify each
+  remaining call in plain language.
+- **SCON-003**: Feature MUST define handling for network-unavailable scenarios when
+  communication is required.
+- **SCON-004**: Feature MUST define the minimum mandatory automated tests covering
+  one primary path and one boundary or failure condition.
+
 ### Key Entities *(include if feature involves data)*
 
 - **[Entity 1]**: [What it represents, key attributes without implementation]

@@ -40,7 +40,16 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Extension Scope Gate: Does every planned component directly support a VS Code
+  extension behavior or extension workflow?
+- Communication Gate: Are all external communications explicitly required,
+  minimized, and disabled by default when not needed?
+- Security Gate: Are input validation, command/file safety, and dependency choices
+  reviewed for secure defaults?
+- Testing Gate: Is there a minimum mandatory automated test set for primary path
+  plus one boundary/failure condition?
+- Simplicity Gate: Is the chosen design the simplest approach that satisfies the
+  feature requirements?
 
 ## Project Structure
 
