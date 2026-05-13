@@ -1,0 +1,44 @@
+{
+  "name": "markdown-cue",
+  "displayName": "Markdown Cue",
+  "description": "Markdown input assistance for VS Code with trigger-based snippet completions.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onCommand:markdown-cue.insertSyntax"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "markdown-cue.insertSyntax",
+        "title": "Markdown: Insert Syntax",
+        "enablement": "editorLangId == markdown"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "npm run test:unit",
+    "test:unit": "mocha --ui tdd \"out/test/suite/**/*.test.js\""
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.5.2",
+    "glob": "^11.0.3",
+    "mocha": "^11.7.4",
+    "typescript": "^5.8.3"
+  }
+}

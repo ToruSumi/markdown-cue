@@ -24,9 +24,9 @@
 
 **Purpose**: Project initialization, extension manifest, and build tooling
 
-- [ ] T001 Create extension manifest with name, displayName, version, engines (vscode ^1.85.0), activationEvents, contributes.commands, main, and scripts in package.json
-- [ ] T002 [P] Configure TypeScript compilation (strict mode, outDir, rootDir, ES2020 target, sourceMap) in tsconfig.json
-- [ ] T003 [P] Create extension packaging exclusion rules in .vscodeignore
+- [X] T001 Create extension manifest with name, displayName, version, engines (vscode ^1.85.0), activationEvents, contributes.commands, main, and scripts in package.json
+- [X] T002 [P] Configure TypeScript compilation (strict mode, outDir, rootDir, ES2020 target, sourceMap) in tsconfig.json
+- [X] T003 [P] Create extension packaging exclusion rules in .vscodeignore
 
 ---
 
@@ -36,9 +36,9 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Define CompletionSnippet interface and create snippet definitions array (H1–H3, Bold, Italic, Link, Image, Table, Code Block, Blockquote, Footnote, Horizontal Rule) with label, detail, documentation, snippet, sortOrder, filterText in src/snippets.ts
-- [ ] T005 [P] Create extension entry point skeleton (activate registers disposables, deactivate is no-op) in src/extension.ts
-- [ ] T006 [P] Setup test runner and Mocha configuration in test/runTest.ts and test/suite/index.ts
+- [X] T004 Define CompletionSnippet interface and create snippet definitions array (H1–H3, Bold, Italic, Link, Image, Table, Code Block, Blockquote, Footnote, Horizontal Rule) with label, detail, documentation, snippet, sortOrder, filterText in src/snippets.ts
+- [X] T005 [P] Create extension entry point skeleton (activate registers disposables, deactivate is no-op) in src/extension.ts
+- [X] T006 [P] Setup test runner and Mocha configuration in test/runTest.ts and test/suite/index.ts
 
 **Checkpoint**: Foundation ready — user story implementation can now begin
 
@@ -54,13 +54,13 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T007 [P] [US1] Write snippet data integrity tests (all keys unique, filterText starts with `;`, snippet contains valid tabstop syntax, sortOrder present) in test/suite/snippets.test.ts
-- [ ] T008 [P] [US1] Write completion provider primary path tests (returns CompletionItem[] on trigger, each item has kind=Snippet + SnippetString insertText + correct range + filterText + sortText) in test/suite/completionProvider.test.ts
+- [X] T007 [P] [US1] Write snippet data integrity tests (all keys unique, filterText starts with `;`, snippet contains valid tabstop syntax, sortOrder present) in test/suite/snippets.test.ts
+- [X] T008 [P] [US1] Write completion provider primary path tests (returns CompletionItem[] on trigger, each item has kind=Snippet + SnippetString insertText + correct range + filterText + sortText) in test/suite/completionProvider.test.ts
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Implement MarkdownCompletionProvider.provideCompletionItems — map CompletionSnippet[] to CompletionItem[] with kind=Snippet, insertText=new SnippetString(snippet), range from `;` to cursor, filterText, sortText in src/completionProvider.ts
-- [ ] T010 [US1] Register CompletionItemProvider with document selector `{ language: 'markdown', scheme: 'file' }` and trigger character `';'` in src/extension.ts
+- [X] T009 [US1] Implement MarkdownCompletionProvider.provideCompletionItems — map CompletionSnippet[] to CompletionItem[] with kind=Snippet, insertText=new SnippetString(snippet), range from `;` to cursor, filterText, sortText in src/completionProvider.ts
+- [X] T010 [US1] Register CompletionItemProvider with document selector `{ language: 'markdown', scheme: 'file' }` and trigger character `';'` in src/extension.ts
 
 **Checkpoint**: User Story 1 fully functional — `;` triggers completion list, selection inserts snippet, trigger text is replaced
 
@@ -76,12 +76,12 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US2] Write context detection boundary tests — isInFencedCodeBlock (inside/outside/nested), isInInlineCode (inside/outside/escaped), isInFrontMatter (inside/outside/no front matter) in test/suite/contextDetector.test.ts
+- [X] T011 [P] [US2] Write context detection boundary tests — isInFencedCodeBlock (inside/outside/nested), isInInlineCode (inside/outside/escaped), isInFrontMatter (inside/outside/no front matter) in test/suite/contextDetector.test.ts
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Implement context detection functions — isInFencedCodeBlock (``` / ~~~ toggle scan), isInInlineCode (backtick count to cursor), isInFrontMatter (--- boundary scan from line 0) in src/contextDetector.ts
-- [ ] T013 [US2] Integrate context detection into provideCompletionItems — call detection functions and return undefined when any suppression flag is true in src/completionProvider.ts
+- [X] T012 [US2] Implement context detection functions — isInFencedCodeBlock (``` / ~~~ toggle scan), isInInlineCode (backtick count to cursor), isInFrontMatter (--- boundary scan from line 0) in src/contextDetector.ts
+- [X] T013 [US2] Integrate context detection into provideCompletionItems — call detection functions and return undefined when any suppression flag is true in src/completionProvider.ts
 
 **Checkpoint**: User Stories 1 AND 2 both work — completions suppressed in code/front matter regions
 
@@ -95,8 +95,8 @@
 
 ### Implementation for User Story 3
 
-- [ ] T014 [US3] Implement Quick Pick insert syntax command — show snippet labels via showQuickPick, insert selected SnippetString at active editor cursor in src/insertSyntaxCommand.ts
-- [ ] T015 [US3] Register markdown-cue.insertSyntax command in activate() in src/extension.ts
+- [X] T014 [US3] Implement Quick Pick insert syntax command — show snippet labels via showQuickPick, insert selected SnippetString at active editor cursor in src/insertSyntaxCommand.ts
+- [X] T015 [US3] Register markdown-cue.insertSyntax command in activate() in src/extension.ts
 
 **Checkpoint**: All user stories independently functional — trigger completion, context suppression, and command palette insertion
 
@@ -106,9 +106,9 @@
 
 **Purpose**: Documentation, security validation, and final quality checks
 
-- [ ] T016 [P] Create README.md with feature overview, usage instructions, development setup, and available commands
-- [ ] T017 Security hardening and communication minimization review — verify no network imports, no telemetry, no external API calls across all source files
-- [ ] T018 Run quickstart.md validation — execute setup, build, and test commands from quickstart.md end-to-end
+- [X] T016 [P] Create README.md with feature overview, usage instructions, development setup, and available commands
+- [X] T017 Security hardening and communication minimization review — verify no network imports, no telemetry, no external API calls across all source files
+- [X] T018 Run quickstart.md validation — execute setup, build, and test commands from quickstart.md end-to-end
 
 ---
 
