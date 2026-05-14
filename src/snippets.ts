@@ -85,7 +85,7 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     label: "Table (3 cols)",
     detail: "| A | B | C |",
     documentation: "Insert a 3-column table",
-    snippet: "| ${1:A} | ${2:B} | ${3:C} |\\n| --- | --- | --- |\\n| ${4:x} | ${5:y} | ${6:z} |",
+    snippet: "| ${1:A} | ${2:B} | ${3:C} |\n| --- | --- | --- |\n| ${4:x} | ${5:y} | ${6:z} |",
     sortOrder: "07",
     filterText: ";table",
     icon: "📊"
@@ -115,7 +115,7 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     label: "Footnote",
     detail: "[^1]",
     documentation: "Insert a footnote",
-    snippet: "${1:text}[^${2:1}]\\n\\n[^${2:1}]: ${3:note}",
+    snippet: "${1:text}[^${2:1}]\n\n[^${2:1}]: ${3:note}",
     sortOrder: "10",
     filterText: ";footnote",
     icon: "🔖"

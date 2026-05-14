@@ -32,4 +32,13 @@ suite("completionProvider", () => {
     assert.ok(h1Item);
     assert.strictEqual(h1Item.icon, "1️⃣");
   });
+
+  test("table snippet insert text contains real newlines", () => {
+    const items = buildCompletionItemData(";table", 6);
+    assert.ok(items.length > 0);
+    const tableItem = items.find((item) => item.label === "Table (3 cols)");
+    assert.ok(tableItem);
+    assert.ok(tableItem.insertText.includes("\n"));
+    assert.ok(!tableItem.insertText.includes("\\n"));
+  });
 });
