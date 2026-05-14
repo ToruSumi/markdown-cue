@@ -6,6 +6,7 @@ export interface CompletionSnippet {
   snippet: string;
   sortOrder: string;
   filterText: string;
+  icon: string;
 }
 
 export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
@@ -16,7 +17,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert an H1 heading",
     snippet: "# ${1:text}",
     sortOrder: "00",
-    filterText: ";heading1"
+    filterText: ";heading1",
+    icon: "1️⃣"
   },
   {
     key: "heading2",
@@ -25,7 +27,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert an H2 heading",
     snippet: "## ${1:text}",
     sortOrder: "01",
-    filterText: ";heading2"
+    filterText: ";heading2",
+    icon: "2️⃣"
   },
   {
     key: "heading3",
@@ -34,7 +37,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert an H3 heading",
     snippet: "### ${1:text}",
     sortOrder: "02",
-    filterText: ";heading3"
+    filterText: ";heading3",
+    icon: "3️⃣"
   },
   {
     key: "bold",
@@ -43,7 +47,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert bold text",
     snippet: "**${1:text}**",
     sortOrder: "03",
-    filterText: ";bold"
+    filterText: ";bold",
+    icon: "💪"
   },
   {
     key: "italic",
@@ -52,7 +57,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert italic text",
     snippet: "*${1:text}*",
     sortOrder: "04",
-    filterText: ";italic"
+    filterText: ";italic",
+    icon: "✨"
   },
   {
     key: "link",
@@ -61,7 +67,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a link",
     snippet: "[${1:text}](${2:url})",
     sortOrder: "05",
-    filterText: ";link"
+    filterText: ";link",
+    icon: "🔗"
   },
   {
     key: "image",
@@ -70,7 +77,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert an image",
     snippet: "![${1:alt}](${2:url})",
     sortOrder: "06",
-    filterText: ";image"
+    filterText: ";image",
+    icon: "🖼️"
   },
   {
     key: "table3",
@@ -79,7 +87,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a 3-column table",
     snippet: "| ${1:A} | ${2:B} | ${3:C} |\\n| --- | --- | --- |\\n| ${4:x} | ${5:y} | ${6:z} |",
     sortOrder: "07",
-    filterText: ";table"
+    filterText: ";table",
+    icon: "📊"
   },
   {
     key: "codeblock",
@@ -88,7 +97,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a fenced code block",
     snippet: "```\n${1:code}\n```",
     sortOrder: "08",
-    filterText: ";code"
+    filterText: ";code",
+    icon: "💻"
   },
   {
     key: "blockquote",
@@ -97,7 +107,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a blockquote",
     snippet: "> ${1:quote}",
     sortOrder: "09",
-    filterText: ";quote"
+    filterText: ";quote",
+    icon: "💬"
   },
   {
     key: "footnote",
@@ -106,7 +117,8 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a footnote",
     snippet: "${1:text}[^${2:1}]\\n\\n[^${2:1}]: ${3:note}",
     sortOrder: "10",
-    filterText: ";footnote"
+    filterText: ";footnote",
+    icon: "🔖"
   },
   {
     key: "hr",
@@ -115,6 +127,7 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     documentation: "Insert a horizontal rule",
     snippet: "---",
     sortOrder: "11",
-    filterText: ";hr"
+    filterText: ";hr",
+    icon: "➖"
   }
 ];

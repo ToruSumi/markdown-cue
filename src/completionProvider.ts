@@ -13,6 +13,7 @@ export interface CompletionItemData {
   sortText: string;
   startCharacter: number;
   endCharacter: number;
+  icon: string;
 }
 
 export function buildCompletionItemData(
@@ -44,7 +45,8 @@ export function buildCompletionItemData(
     filterText: snippet.filterText,
     sortText: snippet.sortOrder,
     startCharacter: semicolonIndex,
-    endCharacter: cursorCharacter
+    endCharacter: cursorCharacter,
+    icon: snippet.icon
   }));
 }
 
@@ -72,8 +74,8 @@ export class MarkdownCompletionProvider implements vscode.CompletionItemProvider
 
     return items.map((item) => {
       const completion = new vscodeApi.CompletionItem(
-        item.label,
-        vscodeApi.CompletionItemKind.Snippet
+        `${item.icon} ${item.label}`,
+        vscodeApi.CompletionItemKind.Text
       );
       completion.insertText = new vscodeApi.SnippetString(item.insertText);
       completion.filterText = item.filterText;
