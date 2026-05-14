@@ -25,11 +25,32 @@ npm run compile
 4. `;` を入力 → 補完候補が表示される
 5. 候補を選択 → Markdown 記法が挿入される
 
+### New Syntax Smoke Check
+
+1. `;strike` を入力して「Strikethrough」を選択し、`~~text~~` 形式で挿入されることを確認
+2. `;check` を入力して「Checkbox」を選択し、`- [ ] text` 形式で挿入されることを確認
+3. `;math` を入力して「Math Block」を選択し、`$$` / 本文 / `$$` の複数行で挿入されることを確認
+4. コマンドパレットから `Markdown: Insert Syntax` を実行し、同じ3候補が同形式で挿入されることを確認
+
 ## Run Tests
 
 ```bash
 npm test
 ```
+
+## Validation Record
+
+- Date: 2026-05-14
+- Commands:
+	- `npm run compile`
+	- `npm test`
+- Result: PASS (`24 passing`)
+
+## Security Review Snapshot
+
+- Runtime network access: none
+- Telemetry and external API calls: none
+- Completion/command paths reviewed: `src/completionProvider.ts`, `src/extension.ts`, `src/insertSyntaxCommand.ts`
 
 ## Key Files
 

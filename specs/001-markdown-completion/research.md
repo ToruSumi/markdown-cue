@@ -1,7 +1,7 @@
 # Research: Markdown Completion Provider
 
 **Feature**: 001-markdown-completion
-**Date**: 2026-05-13
+**Date**: 2026-05-14
 
 ## Research Tasks
 
@@ -51,6 +51,37 @@
 - i18next 等の外部ライブラリ → 依存追加が憲法 IV に反する
 - ハードコード → 将来のローカライズが困難になる
 
+### 4. 追加記法（取り消し線・チェックボックス・数式ブロック）の挿入形式
+
+**Decision**: 新規候補を以下のフォーマットで追加する
+
+- 取り消し線: `~~${1:text}~~`
+- チェックボックス: `- [ ] ${1:text}`
+- 数式ブロック: `$$\n${1:AA}\n$$`
+
+**Rationale**:
+- ユーザー要求をそのまま反映しつつ、数式ブロックは複数行で視認性と編集性を確保できる
+- 既存の表・脚注と同様に実改行を使うことで、補完経路と Quick Pick 経路で同一の挿入品質を維持できる
+- `completionSnippets` へのデータ追加のみで補完・コマンド挿入の両方に自動反映できる
+
+**Alternatives considered**:
+- 単一行数式 `$$ ${1:AA} $$` → 要望確認で複数行形式を採用
+- チェック済み `- [x]` の同時追加 → MVP では未完了チェックボックスを優先しスコープ外
+- 数式専用依存（KaTeX 補助）追加 → 挿入支援機能には不要で設計を複雑化する
+
+### 5. FR-010 固定順の実装指針
+
+**Decision**: `sortOrder` は FR-010 の固定順に一致させる。
+
+固定順: `heading1, heading2, heading3, bold, italic, link, image, table3, codeblock, blockquote, footnote, hr, strikethrough, checkbox, mathblock`
+
+**Rationale**:
+- 「使用頻度が高い順」を仕様上で検証可能なルールに落とし込める
+- 実装・テスト・レビューが同一の期待値を共有できる
+
+**Alternatives considered**:
+- 定性的な順序定義のまま運用 → 実装差分時に期待順序の解釈ズレが発生しやすい
+
 ## Summary
 
 | Topic | Decision | Key Reason |
@@ -58,3 +89,5 @@
 | 補完トリガー + 置換 | `range` + `filterText` + `SnippetString` | 公式推奨、シンプル |
 | 文脈判定 | 行走査アルゴリズム（パーサ不使用） | 依存なし、軽量 |
 | ローカライズ構造 | `snippets.ts` 分離 + `l10n.t()` wrap 準備 | 将来拡張可能、依存なし |
+| 新規3記法の挿入形式 | 取り消し線/チェックボックス/複数行数式を静的スニペット追加 | 実装最小で両経路に一貫反映 |
+| 並び順制御 | FR-010 の固定順と `sortOrder` を一致 | 検証可能性と一貫性を担保 |

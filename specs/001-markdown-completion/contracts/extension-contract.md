@@ -1,7 +1,7 @@
 # Contracts: Markdown Completion Provider
 
 **Feature**: 001-markdown-completion
-**Date**: 2026-05-13
+**Date**: 2026-05-14
 
 ## 1. VS Code Extension Manifest (`package.json`)
 
@@ -12,13 +12,14 @@
 ```json
 {
   "activationEvents": [
-    "onLanguage:markdown"
+    "onLanguage:markdown",
+    "onCommand:markdown-cue.insertSyntax"
   ]
 }
 ```
 
 - `onLanguage:markdown`: Markdown ファイルを開いた時にのみアクティベート
-- コマンド `markdown-cue.insertSyntax` は `contributes.commands` に登録されるため、明示的な `onCommand` は不要（VS Code が自動でアクティベーションイベントを推論）
+- `onCommand:markdown-cue.insertSyntax`: コマンド実行時の遅延アクティベーションを保証する
 
 ### Commands
 
@@ -72,11 +73,21 @@ vscode.languages.registerCompletionItemProvider(
 - 候補抑制条件（コードブロック / インラインコード / front matter）に該当 → `undefined` を返す
 - 通常時 → `CompletionSnippet[]` から変換した `CompletionItem[]` を返す
 - 各 `CompletionItem` は以下を設定:
-  - `kind`: `CompletionItemKind.Snippet`
+  - `kind`: `CompletionItemKind.Text`（ラベルに絵文字アイコンを付与して表示）
   - `insertText`: `new SnippetString(snippet)`
   - `range`: トリガー文字 `;` からカーソル位置まで
   - `filterText`: `;` + key
-  - `sortText`: 並び順キー
+  - `sortText`: 並び順キー（FR-010 の固定順に一致）
+
+### Snippet Coverage Contract
+
+実装は最低限以下の記法候補を含む必要がある。
+
+- 見出し（H1〜H3）
+- 太字、斜体
+- リンク、画像
+- 表、コードブロック、引用、脚注、水平線
+- 取り消し線、チェックボックス、数式ブロック（複数行）
 
 ## 3. Quick Pick Command Contract
 

@@ -129,5 +129,35 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     sortOrder: "11",
     filterText: ";hr",
     icon: "➖"
+  },
+  {
+    key: "strikethrough",
+    label: "Strikethrough",
+    detail: "~~text~~",
+    documentation: "Insert strikethrough text",
+    snippet: "~~${1:text}~~",
+    sortOrder: "12",
+    filterText: ";strike",
+    icon: "🧵"
+  },
+  {
+    key: "checkbox",
+    label: "Checkbox",
+    detail: "- [ ] text",
+    documentation: "Insert an unchecked task item",
+    snippet: "- [ ] ${1:text}",
+    sortOrder: "13",
+    filterText: ";check",
+    icon: "☑️"
+  },
+  {
+    key: "mathblock",
+    label: "Math Block",
+    detail: "$$ ... $$",
+    documentation: "Insert a multiline math block",
+    snippet: "$$\n${1:AA}\n$$",
+    sortOrder: "14",
+    filterText: ";math",
+    icon: "∑"
   }
 ];

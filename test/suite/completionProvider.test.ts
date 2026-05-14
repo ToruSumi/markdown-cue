@@ -41,4 +41,29 @@ suite("completionProvider", () => {
     assert.ok(tableItem.insertText.includes("\n"));
     assert.ok(!tableItem.insertText.includes("\\n"));
   });
+
+  test("supports strike, check, and math triggers", () => {
+    const strike = buildCompletionItemData(";strike", 7).find((item) => item.label === "Strikethrough");
+    const check = buildCompletionItemData(";check", 6).find((item) => item.label === "Checkbox");
+    const math = buildCompletionItemData(";math", 5).find((item) => item.label === "Math Block");
+
+    assert.ok(strike);
+    assert.ok(check);
+    assert.ok(math);
+  });
+
+  test("mathblock insert text contains real newlines", () => {
+    const items = buildCompletionItemData(";math", 5);
+    const mathItem = items.find((item) => item.label === "Math Block");
+    assert.ok(mathItem);
+    assert.ok(mathItem.insertText.includes("\n"));
+    assert.ok(!mathItem.insertText.includes("\\n"));
+  });
+
+  test("sort order starts with heading1", () => {
+    const items = buildCompletionItemData(";", 1);
+    assert.ok(items.length > 0);
+    const sorted = items.slice().sort((a, b) => a.sortText.localeCompare(b.sortText));
+    assert.equal(sorted[0].label, "Heading 1");
+  });
 });

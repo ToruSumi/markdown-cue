@@ -15,7 +15,7 @@ Markdown Cue is a VS Code extension that provides Markdown snippet completions t
 ## Usage
 
 1. Open a Markdown file.
-2. Type `;` or `;link` to trigger completion suggestions.
+2. Type `;`, `;link`, `;strike`, `;check`, or `;math` to trigger completion suggestions.
 3. Pick a suggestion to insert the snippet.
 4. Optional: run `Markdown: Insert Syntax` from the command palette.
 

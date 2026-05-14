@@ -1,7 +1,7 @@
 # Data Model: Markdown Completion Provider
 
 **Feature**: 001-markdown-completion
-**Date**: 2026-05-13
+**Date**: 2026-05-14
 
 ## Entities
 
@@ -18,6 +18,7 @@
 | `snippet` | `string` | `SnippetString` 用のスニペット文字列 (e.g., `"# ${1:text}"`) | 必須、タブストップ含む |
 | `sortOrder` | `string` | `sortText` に使用する並び順キー (e.g., `"00"`, `"01"`) | 必須 |
 | `filterText` | `string` | VS Code の絞り込みに使われる文字列 (e.g., `";heading1"`) | 必須、`;` prefix |
+| `icon` | `string` | 補完ラベル先頭に表示する Unicode 絵文字 | 必須、空文字不可 |
 
 **備考**: `CompletionSnippet` は immutable な静的データ。ランタイムでの変更は不要。
 
@@ -63,3 +64,13 @@ CompletionItemProvider.provideCompletionItems()
 | V-002 | `CompletionSnippet.snippet` | 有効な VS Code SnippetString 構文であること |
 | V-003 | `CompletionSnippet.filterText` | `;` で始まること |
 | V-004 | `DocumentContext` | いずれかの抑制フラグが `true` の場合、空の候補配列を返す |
+| V-005 | `CompletionSnippet.icon` | すべての候補で空欄にしないこと |
+| V-006 | `CompletionSnippet.snippet` (multiline) | 複数行候補は `\\n` 文字列ではなく実改行を保持すること |
+| V-007 | `CompletionSnippet.sortOrder` | FR-010 の固定順（heading1→...→mathblock）と一致すること |
+
+## Current Addition Notes
+
+- 追加対象記法: 取り消し線、チェックボックス、数式ブロック（複数行）
+- 期待フォーマット（strikethrough）: `~~${1:text}~~`
+- 期待フォーマット（checkbox）: `- [ ] ${1:text}`
+- 期待フォーマット（mathblock）: `$$\n${1:AA}\n$$`
