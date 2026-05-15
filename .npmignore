@@ -1,0 +1,7 @@
+src/
+test/
+specs/
+.specify/
+.vscode/
+*.ts
+tsconfig.json
