@@ -4,6 +4,7 @@
   "description": "Markdown input assistance for VS Code with trigger-based snippet completions.",
   "repository": {"url": "https://github.com/ToruSumi/markdown-cue"},
   "version": "0.0.3",
+  "license": "MIT",
   "publisher": "ToruSumi",
   "engines": {
     "vscode": "^1.85.0"
@@ -12,8 +13,7 @@
     "Programming Languages"
   ],
   "activationEvents": [
-    "onLanguage:markdown",
-    "onCommand:markdown-cue.insertSyntax"
+    "onLanguage:markdown"
   ],
   "main": "./out/src/extension.js",
   "contributes": {
@@ -40,6 +40,7 @@
     "@vscode/test-electron": "^2.5.2",
     "glob": "^11.0.3",
     "mocha": "^11.7.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@vscode/vsce": "^3.2.2"
   }
 }

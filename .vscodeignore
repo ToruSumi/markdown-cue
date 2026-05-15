@@ -1,5 +1,6 @@
 .vscode/**
 .specify/**
+.github/**
 specs/**
 test/**
 src/**
