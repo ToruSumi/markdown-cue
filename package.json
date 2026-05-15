@@ -3,7 +3,7 @@
   "displayName": "Markdown Cue",
   "description": "Markdown input assistance for VS Code with trigger-based snippet completions.",
   "repository": {"url": "https://github.com/ToruSumi/markdown-cue"},
-  "version": "0.0.3",
+  "version": "1.0.0",
   "license": "MIT",
   "publisher": "ToruSumi",
   "engines": {
