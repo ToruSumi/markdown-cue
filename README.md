@@ -2,6 +2,8 @@
 
 Markdown Cue is a VS Code extension that provides Markdown snippet completions triggered by `;`.
 
+![Demo screen movie](./demo_movie.gif)
+
 ## Features
 
 - Trigger-based completion for Markdown syntax in Markdown files
