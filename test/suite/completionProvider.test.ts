@@ -52,6 +52,23 @@ suite("completionProvider", () => {
     assert.ok(math);
   });
 
+  test("supports underline trigger", () => {
+    const underline = buildCompletionItemData(";under", 6).find((item) => item.label === "Underline");
+    assert.ok(underline);
+    assert.equal(underline.insertText, "<u>${1:text}</u>");
+  });
+
+  test("supports details trigger with real newlines", () => {
+    const details = buildCompletionItemData(";details", 8).find((item) => item.label === "Details");
+    assert.ok(details);
+    assert.ok(details.insertText.includes("\n"));
+    assert.ok(!details.insertText.includes("\\n"));
+    assert.equal(
+      details.insertText,
+      "<details>\n<summary>${1:summary}</summary>\n${2:body}\n</details>"
+    );
+  });
+
   test("mathblock insert text contains real newlines", () => {
     const items = buildCompletionItemData(";math", 5);
     const mathItem = items.find((item) => item.label === "Math Block");
@@ -65,5 +82,15 @@ suite("completionProvider", () => {
     assert.ok(items.length > 0);
     const sorted = items.slice().sort((a, b) => a.sortText.localeCompare(b.sortText));
     assert.equal(sorted[0].label, "Heading 1");
+  });
+
+  test("integrated catalog includes underline and details alongside existing snippets", () => {
+    const items = buildCompletionItemData(";", 1);
+    const labels = items.map((item) => item.label);
+
+    assert.ok(labels.includes("Underline"));
+    assert.ok(labels.includes("Details"));
+    assert.ok(labels.includes("Table (3 cols)"));
+    assert.ok(labels.includes("Math Block"));
   });
 });
