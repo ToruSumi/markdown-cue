@@ -159,5 +159,25 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     sortOrder: "14",
     filterText: ";math",
     icon: "∑"
+  },
+  {
+    key: "underline",
+    label: "Underline",
+    detail: "<u>text</u>",
+    documentation: "Insert underlined text",
+    snippet: "<u>${1:text}</u>",
+    sortOrder: "15",
+    filterText: ";under",
+    icon: "〰️"
+  },
+  {
+    key: "details",
+    label: "Details",
+    detail: "<details>",
+    documentation: "Insert a collapsible details block",
+    snippet: "<details>\n<summary>${1:summary}</summary>\n${2:body}\n</details>",
+    sortOrder: "16",
+    filterText: ";details",
+    icon: "📁"
   }
 ];
