@@ -57,6 +57,21 @@ suite("snippets", () => {
     assert.equal(snippet, "- [ ] ${1:text}");
   });
 
+  test("underline snippet format", () => {
+    const snippet = getSnippetByKey("underline");
+    assert.equal(snippet, "<u>${1:text}</u>");
+  });
+
+  test("details snippet uses real newlines and tab order", () => {
+    const snippet = getSnippetByKey("details");
+    assert.ok(snippet.includes("\n"));
+    assert.ok(!snippet.includes("\\n"));
+    assert.equal(
+      snippet,
+      "<details>\n<summary>${1:summary}</summary>\n${2:body}\n</details>"
+    );
+  });
+
   test("FR-010 fixed snippet order", () => {
     const expectedOrder = [
       "heading1",
@@ -73,7 +88,10 @@ suite("snippets", () => {
       "hr",
       "strikethrough",
       "checkbox",
-      "mathblock"
+      "mathblock",
+      "underline",
+      "details",
+      "breakpage"
     ];
     const actualOrder = completionSnippets
       .slice()
@@ -90,5 +108,15 @@ suite("snippets", () => {
     assert.ok(math);
     assert.ok(math.snippet.includes("\n"));
     assert.ok(!math.snippet.includes("\\n"));
+
+    const underline = items.find((item) => item.label === "Underline");
+    assert.ok(underline);
+    assert.equal(underline.snippet, "<u>${1:text}</u>");
+
+    const details = items.find((item) => item.label === "Details");
+    assert.ok(details);
+    assert.equal(details.description, "<details>");
+    assert.ok(details.snippet.includes("\n"));
+    assert.ok(!details.snippet.includes("\\n"));
   });
 });

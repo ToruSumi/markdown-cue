@@ -10,6 +10,6 @@ npx @vscode/vsce package
 
 echo "Extension built and packaged successfully."
 
-echo "Installing the extension..."
-code --install-extension *.vsix
-echo "Extension installed successfully."
+# echo "Installing the extension..."
+# code --install-extension *.vsix
+# echo "Extension installed successfully."
