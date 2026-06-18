@@ -179,5 +179,15 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     sortOrder: "16",
     filterText: ";details",
     icon: "📁"
+  },
+  {
+    key: "breakpage",
+    label: "Break Page",
+    detail: "<div style=\"page-break-before:always\"></div>",
+    documentation: "Insert a page break",
+    snippet: "<div style=\"page-break-before:always\"></div>",
+    sortOrder: "17",
+    filterText: ";breakpage",
+    icon: "⏸️"
   }
 ];

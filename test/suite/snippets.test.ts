@@ -90,7 +90,8 @@ suite("snippets", () => {
       "checkbox",
       "mathblock",
       "underline",
-      "details"
+      "details",
+      "breakpage"
     ];
     const actualOrder = completionSnippets
       .slice()
