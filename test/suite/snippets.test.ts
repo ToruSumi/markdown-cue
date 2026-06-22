@@ -72,6 +72,18 @@ suite("snippets", () => {
     );
   });
 
+  test("alert snippets use real newlines", () => {
+    for (const key of ["alert-note", "alert-tip", "alert-important", "alert-warning", "alert-caution"]) {
+      const snippet = getSnippetByKey(key);
+      assert.ok(snippet.includes("\n"), `${key} should use real newline`);
+      assert.ok(!snippet.includes("\\n"), `${key} should not use escaped newline`);
+    }
+  });
+
+  test("alert-note snippet format", () => {
+    assert.equal(getSnippetByKey("alert-note"), "> [!NOTE]\n> ${1:text}");
+  });
+
   test("FR-010 fixed snippet order", () => {
     const expectedOrder = [
       "heading1",
@@ -91,7 +103,12 @@ suite("snippets", () => {
       "mathblock",
       "underline",
       "details",
-      "breakpage"
+      "breakpage",
+      "alert-note",
+      "alert-tip",
+      "alert-important",
+      "alert-warning",
+      "alert-caution"
     ];
     const actualOrder = completionSnippets
       .slice()
