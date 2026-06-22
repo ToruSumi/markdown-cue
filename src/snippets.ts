@@ -189,5 +189,55 @@ export const completionSnippets: ReadonlyArray<CompletionSnippet> = [
     sortOrder: "17",
     filterText: ";breakpage",
     icon: "⏸️"
+  },
+  {
+    key: "alert-note",
+    label: "Alert: Note",
+    detail: "> [!NOTE]",
+    documentation: "Insert a Note alert blockquote",
+    snippet: "> [!NOTE]\n> ${1:text}",
+    sortOrder: "18",
+    filterText: ";alert-note",
+    icon: "📝"
+  },
+  {
+    key: "alert-tip",
+    label: "Alert: Tip",
+    detail: "> [!TIP]",
+    documentation: "Insert a Tip alert blockquote",
+    snippet: "> [!TIP]\n> ${1:text}",
+    sortOrder: "19",
+    filterText: ";alert-tip",
+    icon: "💡"
+  },
+  {
+    key: "alert-important",
+    label: "Alert: Important",
+    detail: "> [!IMPORTANT]",
+    documentation: "Insert an Important alert blockquote",
+    snippet: "> [!IMPORTANT]\n> ${1:text}",
+    sortOrder: "20",
+    filterText: ";alert-important",
+    icon: "❗"
+  },
+  {
+    key: "alert-warning",
+    label: "Alert: Warning",
+    detail: "> [!WARNING]",
+    documentation: "Insert a Warning alert blockquote",
+    snippet: "> [!WARNING]\n> ${1:text}",
+    sortOrder: "21",
+    filterText: ";alert-warning",
+    icon: "⚠️"
+  },
+  {
+    key: "alert-caution",
+    label: "Alert: Caution",
+    detail: "> [!CAUTION]",
+    documentation: "Insert a Caution alert blockquote",
+    snippet: "> [!CAUTION]\n> ${1:text}",
+    sortOrder: "22",
+    filterText: ";alert-caution",
+    icon: "🚨"
   }
 ];
