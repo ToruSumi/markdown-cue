@@ -1,10 +1,11 @@
 import type * as vscode from "vscode";
-import { completionSnippets } from "./snippets";
+import { CompletionSnippet, completionSnippets } from "./snippets";
 import {
   isInFencedCodeBlock,
   isInFrontMatter,
   isInInlineCode
 } from "./contextDetector";
+import { getActiveLocale, getLocalizedSnippets } from "./i18n";
 
 export interface CompletionItemData {
   label: string;
@@ -18,7 +19,8 @@ export interface CompletionItemData {
 
 export function buildCompletionItemData(
   lineText: string,
-  cursorCharacter: number
+  cursorCharacter: number,
+  snippets: ReadonlyArray<CompletionSnippet> = completionSnippets
 ): CompletionItemData[] {
   const segment = lineText.slice(0, cursorCharacter);
   const semicolonIndex = segment.lastIndexOf(";");
@@ -32,7 +34,7 @@ export function buildCompletionItemData(
   }
 
   const normalizedQuery = triggerText.slice(1).toLowerCase();
-  const matched = completionSnippets.filter((snippet) => {
+  const matched = snippets.filter((snippet) => {
     if (normalizedQuery.length === 0) {
       return true;
     }
@@ -67,7 +69,8 @@ export class MarkdownCompletionProvider implements vscode.CompletionItemProvider
 
     const vscodeApi = require("vscode") as typeof import("vscode");
     const lineText = document.lineAt(position.line).text;
-    const items = buildCompletionItemData(lineText, position.character);
+    const localizedSnippets = getLocalizedSnippets(getActiveLocale());
+    const items = buildCompletionItemData(lineText, position.character, localizedSnippets);
     if (items.length === 0) {
       return undefined;
     }

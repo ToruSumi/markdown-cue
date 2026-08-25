@@ -1,5 +1,6 @@
 import type * as vscode from "vscode";
-import { completionSnippets } from "./snippets";
+import { CompletionSnippet, completionSnippets } from "./snippets";
+import { getActiveLocale, getLocalizedSnippets, getQuickPickPlaceholder } from "./i18n";
 
 export interface SyntaxQuickPickItem {
   label: string;
@@ -7,8 +8,10 @@ export interface SyntaxQuickPickItem {
   snippet: string;
 }
 
-export function buildSyntaxQuickPickItems(): SyntaxQuickPickItem[] {
-  return completionSnippets.map((snippet) => ({
+export function buildSyntaxQuickPickItems(
+  snippets: ReadonlyArray<CompletionSnippet> = completionSnippets
+): SyntaxQuickPickItem[] {
+  return snippets.map((snippet) => ({
     label: snippet.label,
     description: snippet.detail,
     snippet: snippet.snippet
@@ -22,9 +25,10 @@ export async function insertSyntaxCommand(): Promise<void> {
     return;
   }
 
+  const locale = getActiveLocale();
   const picked = await vscodeApi.window.showQuickPick(
-    buildSyntaxQuickPickItems(),
-    { placeHolder: "Select Markdown syntax to insert" }
+    buildSyntaxQuickPickItems(getLocalizedSnippets(locale)),
+    { placeHolder: getQuickPickPlaceholder(locale) }
   );
 
   if (!picked) {

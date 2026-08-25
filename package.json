@@ -22,7 +22,7 @@
     "commands": [
       {
         "command": "markdown-cue.insertSyntax",
-        "title": "Markdown: Insert Syntax",
+        "title": "%markdown-cue.insertSyntax.title%",
         "enablement": "editorLangId == markdown"
       }
     ]
