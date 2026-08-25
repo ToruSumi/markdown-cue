@@ -13,6 +13,7 @@ Markdown Cue is a VS Code extension that provides Markdown snippet completions t
   - inline code
   - YAML front matter
 - Command palette entry: `Markdown: Insert Syntax`
+- Display language automatically follows VS Code's display language (`vscode.env.language`); English and Japanese (`ja`) are currently supported, with English used as the fallback for any other language
 
 ## Usage
 

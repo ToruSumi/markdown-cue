@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="accent-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4fc3f7"/>
+      <stop offset="100%" stop-color="#0288d1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- "M" letter — Markdown symbol -->
+  <text
+    x="8"
+    y="86"
+    font-family="'Segoe UI', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="700"
+    font-size="76"
+    fill="#e0e8f0"
+    letter-spacing="-2"
+  >M</text>
+
+  <!-- Semicolon ";" trigger character, accent color -->
+  <text
+    x="72"
+    y="100"
+    font-family="'Segoe UI', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="700"
+    font-size="72"
+    fill="url(#accent-grad)"
+  >;</text>
+
+  <!-- Underline accent bar beneath "M" -->
+  <rect x="8" y="94" width="54" height="5" rx="2.5" fill="#4fc3f7" opacity="0.7"/>
+</svg>
