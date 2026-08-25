@@ -3,6 +3,7 @@
   "displayName": "Markdown Cue",
   "description": "Markdown input assistance for VS Code with trigger-based snippet completions.",
   "repository": {
+    "type": "git",
     "url": "https://github.com/ToruSumi/markdown-cue"
   },
   "version": "1.1.3",
@@ -14,6 +15,12 @@
   },
   "categories": [
     "Programming Languages"
+  ],
+  "keywords": [
+    "markdown",
+    "snippet",
+    "completion",
+    "autocomplete"
   ],
   "activationEvents": [
     "onLanguage:markdown"
